@@ -26,6 +26,42 @@ exports['get name with digits'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get name with underscore'] = function (test) {
+	var lexer = lexers.lexer('foo_bar');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, 'foo_bar');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
+exports['get underscore as name'] = function (test) {
+	var lexer = lexers.lexer('_');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, '_');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
+exports['get name starting with underscore'] = function (test) {
+	var lexer = lexers.lexer('_foo');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, '_foo');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get names'] = function (test) {
 	var lexer = lexers.lexer('foo bar');
 	
