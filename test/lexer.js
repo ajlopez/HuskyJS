@@ -86,3 +86,15 @@ exports['get :: as operator'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get semicolon as delimiter'] = function (test) {
+	var lexer = lexers.lexer(';');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Delimiter);
+	test.equal(result.value, ';');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
