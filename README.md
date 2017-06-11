@@ -16,7 +16,8 @@ TBD
 
 ## References
 
-TBD
+- [Lexical Structure](https://www.haskell.org/onlinereport/lexemes.html)
+- [Layout](https://www.haskell.org/onlinereport/syntax-iso.html#layout)
 
 ## Samples
 
