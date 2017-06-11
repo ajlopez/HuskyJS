@@ -14,6 +14,18 @@ exports['get name'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get name with digits'] = function (test) {
+	var lexer = lexers.lexer('foo42');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, 'foo42');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get names'] = function (test) {
 	var lexer = lexers.lexer('foo bar');
 	
