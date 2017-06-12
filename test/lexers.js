@@ -1,5 +1,5 @@
 
-var lexers = require('../lib/lexer');
+var lexers = require('../lib/lexers');
 var TokenType = lexers.TokenType;
 
 exports['get name'] = function (test) {
