@@ -134,6 +134,24 @@ exports['get parenthesis as delimiters'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get braces as delimiters'] = function (test) {
+	var lexer = lexers.lexer('{}');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Delimiter);
+	test.equal(result.value, '{');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Delimiter);
+	test.equal(result.value, '}');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get :: as operator'] = function (test) {
 	var lexer = lexers.lexer('::');
 	
