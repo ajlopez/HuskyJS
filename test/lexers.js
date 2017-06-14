@@ -116,6 +116,18 @@ exports['get integer'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get real'] = function (test) {
+	var lexer = lexers.lexer('3.14159');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Real);
+	test.equal(result.value, '3.14159');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get parenthesis as delimiters'] = function (test) {
 	var lexer = lexers.lexer('()');
 	
