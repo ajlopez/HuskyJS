@@ -14,6 +14,18 @@ exports['get name'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get name and skip comment'] = function (test) {
+	var lexer = lexers.lexer('foo -- a comment');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, 'foo');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get name with digits'] = function (test) {
 	var lexer = lexers.lexer('foo42');
 	
