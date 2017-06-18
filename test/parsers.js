@@ -48,6 +48,18 @@ exports['parse name expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse composite expression with one argument'] = function (test) {
+	var parser = parsers.parser('incr 1');
+	var ctx = contexts.context();
+	ctx.set('incr', function (x) { return x + 1; });
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), 2);
+	
+	test.equal(parser.parse(), null);	
+};
 
 
 
