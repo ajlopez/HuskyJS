@@ -23,4 +23,16 @@ exports['parse real expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse string expression'] = function (test) {
+	var parser = parsers.parser('"foo"');
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(), "foo");
+	
+	test.equal(parser.parse(), null);	
+};
+
+
 
