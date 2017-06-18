@@ -1,5 +1,6 @@
 
 var parsers = require('../lib/parsers');
+var contexts = require('../lib/contexts');
 
 exports['parse integer expression'] = function (test) {
 	var parser = parsers.parser('42');
@@ -33,6 +34,20 @@ exports['parse string expression'] = function (test) {
 	
 	test.equal(parser.parse(), null);	
 };
+
+exports['parse name expression'] = function (test) {
+	var parser = parsers.parser('foo');
+	var ctx = contexts.context();
+	ctx.set('foo', 'bar');
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), "bar");
+	
+	test.equal(parser.parse(), null);	
+};
+
 
 
 
