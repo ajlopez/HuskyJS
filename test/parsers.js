@@ -61,5 +61,20 @@ exports['parse composite expression with one argument'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse composite expression with two argument'] = function (test) {
+	var parser = parsers.parser('add 1 2');
+	var ctx = contexts.context();
+	ctx.set('add', function (x) { return function (y) { return x + y; } });
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), 3);
+	
+	test.equal(parser.parse(), null);	
+};
+
+
+
 
 
