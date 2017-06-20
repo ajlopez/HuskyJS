@@ -19,6 +19,8 @@ TBD
 - [Lexical Structure](https://www.haskell.org/onlinereport/lexemes.html)
 - [Layout](https://www.haskell.org/onlinereport/syntax-iso.html#layout)
 - [Haskell Indentation](https://en.wikibooks.org/wiki/Haskell/Indentation)
+- [Learn Haskell](https://github.com/bitemyapp/learnhaskell)
+- [PureScript](http://www.purescript.org/)
 
 ## Samples
 
