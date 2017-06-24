@@ -96,6 +96,19 @@ exports['parse composite expression with two argument'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse function expression in parentheses'] = function (test) {
+	var parser = parsers.parser('(add)');
+	var ctx = contexts.context();
+	ctx.set('add', function (x) { return function (y) { return x + y; } });
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), ctx.get('add'));
+	
+	test.equal(parser.parse(), null);	
+};
+
 
 
 
