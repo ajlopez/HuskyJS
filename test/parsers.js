@@ -123,3 +123,16 @@ exports['parse type expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse add expression'] = function (test) {
+	var parser = parsers.parser('2+3');
+	var ctx = contexts.context();
+	ctx.set('+', function (x) { return function (y) { return x + y; } });
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), 5);
+	
+	test.equal(parser.parse(), null);	
+};
+
