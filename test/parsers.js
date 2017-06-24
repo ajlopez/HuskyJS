@@ -136,3 +136,23 @@ exports['parse add expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse func expression'] = function (test) {
+	var parser = parsers.parser('String -> Integer');
+	var ctx = contexts.context();
+	ctx.set('->', function (x) { return function (y) { return types.func(x, y); } });
+	ctx.set('Integer', types.Integer);
+	ctx.set('String', types.String);
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	
+	var value = expr.evaluate(ctx);
+	
+	test.ok(value);
+	test.ok(types.isType(value));
+	test.equal(value.from(), types.String);
+	test.equal(value.to(), types.Integer);
+	
+	test.equal(parser.parse(), null);	
+};
