@@ -35,6 +35,17 @@ exports['parse real expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse real expression in parenthesis'] = function (test) {
+	var parser = parsers.parser('(3.14159)');
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(), 3.14159);
+	
+	test.equal(parser.parse(), null);	
+};
+
 exports['parse string expression'] = function (test) {
 	var parser = parsers.parser('"foo"');
 	
