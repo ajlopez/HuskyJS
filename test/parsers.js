@@ -1,6 +1,7 @@
 
 var parsers = require('../lib/parsers');
 var contexts = require('../lib/contexts');
+var types = require('../lib/types');
 
 exports['parse integer expression'] = function (test) {
 	var parser = parsers.parser('42');
@@ -109,7 +110,16 @@ exports['parse function expression in parentheses'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
-
-
-
+exports['parse type expression'] = function (test) {
+	var parser = parsers.parser('Integer');
+	var ctx = contexts.context();
+	ctx.set('Integer', types.Integer);
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), types.Integer);
+	
+	test.equal(parser.parse(), null);	
+};
 
