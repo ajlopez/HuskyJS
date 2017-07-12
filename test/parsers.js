@@ -110,15 +110,26 @@ exports['parse function expression in parentheses'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
-exports['parse type expression'] = function (test) {
+exports['parse Integer type expression'] = function (test) {
 	var parser = parsers.parser('Integer');
-	var ctx = contexts.context();
-	ctx.set('Integer', types.Integer);
+	var ctx = contexts.topContext();
 	
 	var expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), types.Integer);
+	
+	test.equal(parser.parse(), null);	
+};
+
+exports['parse String type expression'] = function (test) {
+	var parser = parsers.parser('String');
+	var ctx = contexts.topContext();
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(ctx), types.String);
 	
 	test.equal(parser.parse(), null);	
 };
@@ -156,3 +167,4 @@ exports['parse func expression'] = function (test) {
 	
 	test.equal(parser.parse(), null);	
 };
+
