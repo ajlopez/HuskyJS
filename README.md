@@ -21,6 +21,8 @@ TBD
 - [Haskell Indentation](https://en.wikibooks.org/wiki/Haskell/Indentation)
 - [Learn Haskell](https://github.com/bitemyapp/learnhaskell)
 - [PureScript](http://www.purescript.org/)
+- [GHC/Memory Management](https://wiki.haskell.org/GHC/Memory_Management)
+- [Immutable.js](https://facebook.github.io/immutable-js/)
 
 ## Samples
 
