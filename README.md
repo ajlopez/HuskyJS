@@ -23,6 +23,7 @@ TBD
 - [PureScript](http://www.purescript.org/)
 - [GHC/Memory Management](https://wiki.haskell.org/GHC/Memory_Management)
 - [Immutable.js](https://facebook.github.io/immutable-js/)
+- [Online Course: Functional Programming in Haskell](https://www.futurelearn.com/courses/functional-programming-haskell)
 
 ## Samples
 
