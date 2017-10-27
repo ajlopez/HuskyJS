@@ -116,6 +116,30 @@ exports['get name with spaces'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get new line as end of expression'] = function (test) {
+var lexer = lexers.lexer('\n');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.EndOfExpression);
+	test.equal(result.value, '\n');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
+exports['get carriage return and new line as end of expression'] = function (test) {
+var lexer = lexers.lexer('\r\n');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.EndOfExpression);
+	test.equal(result.value, '\n');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get integer'] = function (test) {
 	var lexer = lexers.lexer('42');
 	
