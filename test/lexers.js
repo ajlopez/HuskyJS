@@ -236,6 +236,18 @@ exports['get -> as operator'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get `div` as operator'] = function (test) {
+	var lexer = lexers.lexer('`div`');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Operator);
+	test.equal(result.value, 'div');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get semicolon as delimiter'] = function (test) {
 	var lexer = lexers.lexer(';');
 	
