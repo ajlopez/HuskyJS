@@ -37,4 +37,17 @@ exports['get undefined type for name from machine context'] = function (test) {
 	test.equal(result, null);
 };
 
+exports['evaluate define name type'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("answer :: Int");
+	
+	test.ok(result);
+	
+	result = machine.getType("answer");
+	
+	test.ok(result);
+	test.equal(result, types.Int);
+};
+
 
