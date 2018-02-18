@@ -20,3 +20,21 @@ exports['evaluate type name'] = function (test) {
 	test.equal(result, types.Int);
 };
 
+exports['get defined value from machine context'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.get("Int");
+	
+	test.ok(result);
+	test.equal(result, types.Int);
+};
+
+exports['get undefined type for name from machine context'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.get("answer");
+	
+	test.equal(result, null);
+};
+
+
