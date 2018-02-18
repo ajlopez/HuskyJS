@@ -21,8 +21,16 @@ exports['top context'] = function (test) {
 	
 	test.ok(ctx.get('String'));
 	test.ok(types.isType(ctx.get('String')));
+	test.ok(ctx.get('Int'));
+	test.ok(types.isType(ctx.get('Int')));
 	test.ok(ctx.get('Integer'));
 	test.ok(types.isType(ctx.get('Integer')));
+	test.ok(ctx.get('Float'));
+	test.ok(types.isType(ctx.get('Float')));
+	test.ok(ctx.get('Double'));
+	test.ok(types.isType(ctx.get('Double')));
+	test.ok(ctx.get('Char'));
+	test.ok(types.isType(ctx.get('Char')));
 	test.ok(ctx.get('->'));
 	test.equal(typeof ctx.get('->'), 'function');
 };
