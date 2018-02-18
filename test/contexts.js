@@ -16,6 +16,20 @@ exports['set and get value'] = function (test) {
 	test.equal(ctx.get('foo'), 'bar');
 };
 
+exports['get undefined type'] = function (test) {
+	var ctx = contexts.context();
+	
+	test.equal(ctx.getType('foo'), null);
+};
+
+exports['define and get type'] = function (test) {
+	var ctx = contexts.context();
+	
+	ctx.defineType('answer', types.Integer);
+	
+	test.equal(ctx.getType('answer'), types.Integer);
+};
+
 exports['top context'] = function (test) {
 	var ctx = contexts.topContext();
 	
