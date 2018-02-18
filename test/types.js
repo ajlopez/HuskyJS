@@ -6,6 +6,16 @@ exports['Integer as type'] = function (test) {
 	test.ok(types.isType(types.Integer));
 };
 
+exports['Int as type'] = function (test) {
+	test.ok(types.Int);
+	test.ok(types.isType(types.Int));
+};
+
+exports['Float as type'] = function (test) {
+	test.ok(types.Float);
+	test.ok(types.isType(types.Float));
+};
+
 exports['Double as type'] = function (test) {
 	test.ok(types.Double);
 	test.ok(types.isType(types.Double));
