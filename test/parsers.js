@@ -168,3 +168,20 @@ exports['parse func expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse func expression using top context'] = function (test) {
+	var parser = parsers.parser('String -> Integer');
+	var ctx = contexts.topContext();
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	
+	var value = expr.evaluate(ctx);
+	
+	test.ok(value);
+	test.ok(types.isType(value));
+	test.equal(value.from(), types.String);
+	test.equal(value.to(), types.Integer);
+	
+	test.equal(parser.parse(), null);	
+};
