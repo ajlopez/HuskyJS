@@ -50,4 +50,17 @@ exports['evaluate define name type'] = function (test) {
 	test.equal(result, types.Int);
 };
 
+exports['evaluate name to value'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("answer = 42");
+	
+	test.ok(result);
+	
+	result = machine.get("answer");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
 
