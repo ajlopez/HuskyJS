@@ -50,6 +50,19 @@ exports['evaluate define name type'] = function (test) {
 	test.equal(result, types.Int);
 };
 
+exports['evaluate define name type to functional type'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("fn :: Int -> Int");
+	
+	test.ok(result);
+	
+	result = machine.getType("fn");
+	
+	test.ok(result);
+	test.ok(types.isType(result));
+};
+
 exports['evaluate name to value'] = function (test) {
 	var machine = machines.machine();
 	
