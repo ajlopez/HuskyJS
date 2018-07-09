@@ -85,5 +85,14 @@ exports['evaluate add numbers'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate subtract numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("44 - 2");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
 
 
