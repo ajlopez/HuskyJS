@@ -76,4 +76,14 @@ exports['evaluate name to value'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate add numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("40 + 2");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
+
 
