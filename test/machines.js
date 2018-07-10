@@ -94,5 +94,14 @@ exports['evaluate subtract numbers'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate multiply numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("21 * 2");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
 
 
