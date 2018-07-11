@@ -103,5 +103,14 @@ exports['evaluate multiply numbers'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate divide numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("84 / 2");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
 
 
