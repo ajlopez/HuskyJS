@@ -116,8 +116,32 @@ exports['get name with spaces'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get name, operator and integer'] = function (test) {
+	var lexer = lexers.lexer('n+1');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, 'n');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Operator);
+	test.equal(result.value, '+');
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Integer);
+	test.equal(result.value, '1');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get new line as end of expression'] = function (test) {
-var lexer = lexers.lexer('\n');
+	var lexer = lexers.lexer('\n');
 	
 	var result = lexer.nextToken();
 	
