@@ -112,5 +112,15 @@ exports['evaluate divide numbers'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate add value and number'] = function (test) {
+	var machine = machines.machine();
+	
+	machine.evaluate("n = 40");
+	var result = machine.evaluate("n+2");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
 
 
