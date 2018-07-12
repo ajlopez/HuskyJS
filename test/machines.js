@@ -122,5 +122,14 @@ exports['evaluate add value and number'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate raise to power'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("2^3");
+	
+	test.ok(result);
+	test.equal(result, 8);
+};
+
 
 
