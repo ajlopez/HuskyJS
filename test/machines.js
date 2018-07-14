@@ -131,5 +131,14 @@ exports['evaluate raise to power'] = function (test) {
 	test.equal(result, 8);
 };
 
+exports['evaluate integer division'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("6 `div` 5");
+	
+	test.ok(result);
+	test.equal(result, 1);
+};
+
 
 
