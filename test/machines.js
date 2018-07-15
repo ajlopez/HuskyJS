@@ -140,5 +140,14 @@ exports['evaluate integer division'] = function (test) {
 	test.equal(result, 1);
 };
 
+exports['evaluate integer modulus'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("7 `mod` 5");
+	
+	test.ok(result);
+	test.equal(result, 2);
+};
+
 
 
