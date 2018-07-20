@@ -38,4 +38,16 @@ exports['evaluate name expression'] = function (test) {
 	test.strictEqual(result, 42);
 };
 
+exports['build composite expression'] = function (test) {
+	var expr = expressions.composite(expressions.name('fn'), [ expressions.constant(42) ]);
+	
+	test.ok(expr);
+	test.ok(expr.expression()),
+	test.ok(expr.expressions()),
+	test.equal(expr.expressions().length, 1);
+	
+	test.equal(expr.expression().name(), 'fn');
+	test.equal(expr.expressions()[0].value(), 42);
+};
+
 
