@@ -30,6 +30,28 @@ exports['define and get type'] = function (test) {
 	test.equal(ctx.getType('answer'), types.Integer);
 };
 
+exports['context with parent context'] = function (test) {
+	var parent = contexts.context();
+	
+	parent.set('a', 1);
+	parent.set('b', 2);
+	
+	var ctx = contexts.context(parent);
+	
+	ctx.set('b', 3);
+	ctx.set('c', 4);
+	
+	test.equal(ctx.get('d'), null);
+	test.equal(ctx.get('c'), 4);
+	test.equal(ctx.get('b'), 3);
+	test.equal(ctx.get('a'), 1);
+	
+	test.equal(parent.get('d'), null);
+	test.equal(parent.get('c'), null);
+	test.equal(parent.get('b'), 2);
+	test.equal(parent.get('a'), 1);
+};
+
 exports['top context'] = function (test) {
 	var ctx = contexts.topContext();
 	
