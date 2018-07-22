@@ -90,7 +90,7 @@ exports['parse name expression'] = function (test) {
 exports['parse composite expression with one argument'] = function (test) {
 	var parser = parsers.parser('incr 1');
 	var ctx = contexts.context();
-	ctx.set('incr', function (x) { return x + 1; });
+	ctx.set('incr', function (ctx, x) { return x.evaluate(ctx) + 1; });
 	
 	var expr = parser.parse();
 	
@@ -103,7 +103,16 @@ exports['parse composite expression with one argument'] = function (test) {
 exports['parse composite expression with two argument'] = function (test) {
 	var parser = parsers.parser('add 1 2');
 	var ctx = contexts.context();
-	ctx.set('add', function (x) { return function (y) { return x + y; } });
+	
+	ctx.set('add', function (ctx, x) {
+		var xval = x.evaluate(ctx);
+		
+		return function (ctx, y) {
+			var yval = y.evaluate(ctx);
+			
+			return xval + yval; 
+		} 
+	});
 	
 	var expr = parser.parse();
 	
@@ -116,7 +125,15 @@ exports['parse composite expression with two argument'] = function (test) {
 exports['parse function expression in parentheses'] = function (test) {
 	var parser = parsers.parser('(add)');
 	var ctx = contexts.context();
-	ctx.set('add', function (x) { return function (y) { return x + y; } });
+	ctx.set('add', function (ctx, x) {
+		var xval = x.evaluate(ctx);
+		
+		return function (ctx, y) {
+			var yval = y.evaluate(ctx);
+			
+			return xval + yval; 
+		} 
+	});
 	
 	var expr = parser.parse();
 	
@@ -153,7 +170,16 @@ exports['parse String type expression'] = function (test) {
 exports['parse add expression'] = function (test) {
 	var parser = parsers.parser('2+3');
 	var ctx = contexts.context();
-	ctx.set('+', function (x) { return function (y) { return x + y; } });
+
+	ctx.set('+', function (ctx, x) {
+		var xval = x.evaluate(ctx);
+		
+		return function (ctx, y) {
+			var yval = y.evaluate(ctx);
+			
+			return xval + yval; 
+		} 
+	});
 	
 	var expr = parser.parse();
 	
@@ -166,7 +192,11 @@ exports['parse add expression'] = function (test) {
 exports['parse func expression'] = function (test) {
 	var parser = parsers.parser('String -> Integer');
 	var ctx = contexts.context();
-	ctx.set('->', function (x) { return function (y) { return types.func(x, y); } });
+	ctx.set('->', function (ctx, x) { 
+		return function (ctx, y) { 
+			return types.func(x.evaluate(ctx), y.evaluate(ctx)); 
+		} 
+	});
 	ctx.set('Integer', types.Integer);
 	ctx.set('String', types.String);
 	
