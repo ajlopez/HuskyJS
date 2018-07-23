@@ -157,4 +157,13 @@ exports['evaluate false constant'] = function (test) {
 	test.strictEqual(result, false);
 };
 
+exports['evaluate true constant'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("True");
+	
+	test.strictEqual(result, true);
+};
+
+
 
