@@ -149,5 +149,12 @@ exports['evaluate integer modulus'] = function (test) {
 	test.equal(result, 2);
 };
 
+exports['evaluate false constant'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate("False");
+	
+	test.strictEqual(result, false);
+};
 
 
