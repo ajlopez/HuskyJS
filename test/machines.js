@@ -165,5 +165,14 @@ exports['evaluate true constant'] = function (test) {
 	test.strictEqual(result, true);
 };
 
+exports['evaluate logical or operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate("True || True"), true);
+	test.strictEqual(machine.evaluate("True || False"), true);
+	test.strictEqual(machine.evaluate("False || True"), true);
+	test.strictEqual(machine.evaluate("False || False"), false);
+};
+
 
 
