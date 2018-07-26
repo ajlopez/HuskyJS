@@ -183,4 +183,10 @@ exports['evaluate logical and operator'] = function (test) {
 	test.strictEqual(machine.evaluate("False && False"), false);
 };
 
+exports['evaluate logical not operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate("not True"), false);
+	test.strictEqual(machine.evaluate("not False"), true);
+};
 
