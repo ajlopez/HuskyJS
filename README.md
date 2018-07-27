@@ -27,6 +27,7 @@ TBD
 - [Why is function composition in Haskell right associative?](https://stackoverflow.com/questions/20342860/why-is-function-composition-in-haskell-right-associative)
 - [Haskell 98 Report: Predefined Types and Classes](https://www.haskell.org/onlinereport/basic.html)
 - [Division in Haskell](https://stackoverflow.com/questions/7368926/division-in-haskell)
+- [Haskell Syntax](http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html)
 
 ## Samples
 

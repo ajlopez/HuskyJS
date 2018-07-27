@@ -190,3 +190,9 @@ exports['evaluate logical not operator'] = function (test) {
 	test.strictEqual(machine.evaluate("not False"), true);
 };
 
+exports['evaluate sqrt operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("sqrt 4"), 2);
+	test.equal(machine.evaluate("sqrt 25"), 5);
+};
