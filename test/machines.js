@@ -196,3 +196,11 @@ exports['evaluate sqrt operator'] = function (test) {
 	test.equal(machine.evaluate("sqrt 4"), 2);
 	test.equal(machine.evaluate("sqrt 25"), 5);
 };
+
+exports['evaluate exp operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("exp 0"), 1);
+	test.equal(machine.evaluate("exp 1"), Math.E);
+	test.equal(machine.evaluate("exp 2"), Math.exp(2));
+};
