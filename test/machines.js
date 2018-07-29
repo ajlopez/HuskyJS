@@ -204,3 +204,11 @@ exports['evaluate exp operator'] = function (test) {
 	test.equal(machine.evaluate("exp 1"), Math.E);
 	test.equal(machine.evaluate("exp 2"), Math.exp(2));
 };
+
+exports['evaluate abs operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("abs 0"), 0);
+	test.equal(machine.evaluate("abs 1"), 1);
+	test.equal(machine.evaluate("abs (0 - 42)"), 42);
+};
