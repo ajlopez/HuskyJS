@@ -212,3 +212,11 @@ exports['evaluate abs operator'] = function (test) {
 	test.equal(machine.evaluate("abs 1"), 1);
 	test.equal(machine.evaluate("abs (0 - 42)"), 42);
 };
+
+exports['evaluate sin operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("sin 0"), 0);
+	test.equal(machine.evaluate("sin 1"), Math.sin(1));
+	test.equal(machine.evaluate("sin 2"), Math.sin(2));
+};
