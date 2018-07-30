@@ -220,3 +220,11 @@ exports['evaluate sin operator'] = function (test) {
 	test.equal(machine.evaluate("sin 1"), Math.sin(1));
 	test.equal(machine.evaluate("sin 2"), Math.sin(2));
 };
+
+exports['evaluate cos operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("cos 0"), 1);
+	test.equal(machine.evaluate("cos 1"), Math.cos(1));
+	test.equal(machine.evaluate("cos 2"), Math.cos(2));
+};
