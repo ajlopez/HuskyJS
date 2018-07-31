@@ -228,3 +228,11 @@ exports['evaluate cos operator'] = function (test) {
 	test.equal(machine.evaluate("cos 1"), Math.cos(1));
 	test.equal(machine.evaluate("cos 2"), Math.cos(2));
 };
+
+exports['evaluate tan operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("tan 0"), 0);
+	test.equal(machine.evaluate("tan 1"), Math.tan(1));
+	test.equal(machine.evaluate("tan 2"), Math.tan(2));
+};
