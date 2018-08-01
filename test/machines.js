@@ -236,3 +236,11 @@ exports['evaluate tan operator'] = function (test) {
 	test.equal(machine.evaluate("tan 1"), Math.tan(1));
 	test.equal(machine.evaluate("tan 2"), Math.tan(2));
 };
+
+exports['evaluate floor operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("floor 0"), 0);
+	test.equal(machine.evaluate("floor 1.5"), 1);
+	test.equal(machine.evaluate("floor (1 - 2.5)"), -2);
+};
