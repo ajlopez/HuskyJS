@@ -244,3 +244,11 @@ exports['evaluate floor operator'] = function (test) {
 	test.equal(machine.evaluate("floor 1.5"), 1);
 	test.equal(machine.evaluate("floor (1 - 2.5)"), -2);
 };
+
+exports['evaluate asin operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("asin 0"), 0);
+	test.equal(machine.evaluate("asin 0.5"), Math.asin(0.5));
+	test.equal(machine.evaluate("asin (0.5 - 1)"), Math.asin(-0.5));
+};
