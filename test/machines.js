@@ -252,3 +252,11 @@ exports['evaluate asin operator'] = function (test) {
 	test.equal(machine.evaluate("asin 0.5"), Math.asin(0.5));
 	test.equal(machine.evaluate("asin (0.5 - 1)"), Math.asin(-0.5));
 };
+
+exports['evaluate acos operator'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate("acos 0"), Math.acos(0));
+	test.equal(machine.evaluate("acos 0.5"), Math.acos(0.5));
+	test.equal(machine.evaluate("acos (0.5 - 1)"), Math.acos(-0.5));
+};
