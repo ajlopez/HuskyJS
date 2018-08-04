@@ -12,6 +12,10 @@ npm install huskyjs
 
 ## Usage
 
+```js
+var husky = require('huskyjs');
+```
+
 TBD
 
 ## References
