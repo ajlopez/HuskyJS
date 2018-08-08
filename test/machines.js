@@ -11,6 +11,15 @@ exports['evaluate integer'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['evaluate string'] = function (test) {
+	var machine = machines.machine();
+	
+	var result = machine.evaluate('"foo"');
+	
+	test.ok(result);
+	test.equal(result, "foo");
+};
+
 exports['evaluate type name'] = function (test) {
 	var machine = machines.machine();
 	
@@ -267,4 +276,10 @@ exports['evaluate atan operator'] = function (test) {
 	test.equal(machine.evaluate("atan 0"), Math.atan(0));
 	test.equal(machine.evaluate("atan 0.5"), Math.atan(0.5));
 	test.equal(machine.evaluate("atan (0.5 - 1)"), Math.atan(-0.5));
+};
+
+exports['evaluate string concatenation'] = function (test) {
+	var machine = machines.machine();
+	
+	test.equal(machine.evaluate('"foo" ++ "bar"', "foobar"));
 };
