@@ -281,5 +281,5 @@ exports['evaluate atan operator'] = function (test) {
 exports['evaluate string concatenation'] = function (test) {
 	var machine = machines.machine();
 	
-	test.equal(machine.evaluate('"foo" ++ "bar"', "foobar"));
+	test.equal(machine.evaluate('"foo" ++ "bar"'), "foobar");
 };
