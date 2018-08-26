@@ -283,3 +283,12 @@ exports['evaluate string concatenation'] = function (test) {
 	
 	test.equal(machine.evaluate('"foo" ++ "bar"'), "foobar");
 };
+
+exports['evaluate equals numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('42 == 42'), true);
+	test.strictEqual(machine.evaluate('42 == (21 * 2)'), true);
+
+	test.strictEqual(machine.evaluate('42 == 1'), false);
+};
