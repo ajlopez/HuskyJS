@@ -291,6 +291,7 @@ exports['evaluate equals numbers'] = function (test) {
 	test.strictEqual(machine.evaluate('42 == (21 * 2)'), true);
 
 	test.strictEqual(machine.evaluate('42 == 1'), false);
+	test.strictEqual(machine.evaluate('42 == "42"'), false);
 };
 
 exports['evaluate equals strings'] = function (test) {
