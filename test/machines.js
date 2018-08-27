@@ -292,3 +292,13 @@ exports['evaluate equals numbers'] = function (test) {
 
 	test.strictEqual(machine.evaluate('42 == 1'), false);
 };
+
+exports['evaluate equals strings'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('"foo" == "foo"'), true);
+	test.strictEqual(machine.evaluate('"foobar" == ("foo" ++ "bar")'), true);
+
+	test.strictEqual(machine.evaluate('"foo" == "bar"'), false);
+	test.strictEqual(machine.evaluate('"foo" == 42'), false);
+};
