@@ -303,3 +303,23 @@ exports['evaluate equals strings'] = function (test) {
 	test.strictEqual(machine.evaluate('"foo" == "bar"'), false);
 	test.strictEqual(machine.evaluate('"foo" == 42'), false);
 };
+
+exports['evaluate not equals numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('42 /= 42'), false);
+	test.strictEqual(machine.evaluate('42 /= (21 * 2)'), false);
+
+	test.strictEqual(machine.evaluate('42 /= 1'), true);
+	test.strictEqual(machine.evaluate('42 /= "42"'), true);
+};
+
+exports['evaluate not equals strings'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('"foo" /= "foo"'), false);
+	test.strictEqual(machine.evaluate('"foobar" /= ("foo" ++ "bar")'), false);
+
+	test.strictEqual(machine.evaluate('"foo" /= "bar"'), true);
+	test.strictEqual(machine.evaluate('"foo" /= 42'), true);
+};
