@@ -323,3 +323,11 @@ exports['evaluate not equals strings'] = function (test) {
 	test.strictEqual(machine.evaluate('"foo" /= "bar"'), true);
 	test.strictEqual(machine.evaluate('"foo" /= 42'), true);
 };
+
+exports['accessing character'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('"foo" !! 0'), 'f');
+	test.strictEqual(machine.evaluate('"foo" !! 1'), 'o');
+	test.strictEqual(machine.evaluate('"foo" !! 2'), 'o');
+};
