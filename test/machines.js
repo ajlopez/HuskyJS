@@ -331,3 +331,12 @@ exports['accessing character'] = function (test) {
 	test.strictEqual(machine.evaluate('"foo" !! 1'), 'o');
 	test.strictEqual(machine.evaluate('"foo" !! 2'), 'o');
 };
+
+exports['number to character'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('chr 32'), ' ');
+	test.strictEqual(machine.evaluate('chr 48'), '0');
+	test.strictEqual(machine.evaluate('chr 49'), '1');
+	test.strictEqual(machine.evaluate('chr 65'), 'A');
+};
