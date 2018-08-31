@@ -188,6 +188,18 @@ exports['get string'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get character'] = function (test) {
+	var lexer = lexers.lexer("'c'");
+	
+	var result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Character);
+	test.equal(result.value, 'c');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get real'] = function (test) {
 	var lexer = lexers.lexer('3.14159');
 	
