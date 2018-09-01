@@ -74,6 +74,17 @@ exports['parse string expression'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse character expression'] = function (test) {
+	var parser = parsers.parser("'a'");
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(), "a");
+	
+	test.equal(parser.parse(), null);	
+};
+
 exports['parse name expression'] = function (test) {
 	var parser = parsers.parser('foo');
 	var ctx = contexts.context();
