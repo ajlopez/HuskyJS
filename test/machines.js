@@ -324,6 +324,16 @@ exports['evaluate not equals strings'] = function (test) {
 	test.strictEqual(machine.evaluate('"foo" /= 42'), true);
 };
 
+exports['evaluate less than with numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('42 < 42'), false);
+	test.strictEqual(machine.evaluate('42 < (21 * 2)'), false);
+
+	test.strictEqual(machine.evaluate('42 < 101'), true);
+	test.strictEqual(machine.evaluate('1 < 42'), true);
+};
+
 exports['accessing character'] = function (test) {
 	var machine = machines.machine();
 	
@@ -340,3 +350,13 @@ exports['number to character'] = function (test) {
 	test.strictEqual(machine.evaluate('chr 49'), '1');
 	test.strictEqual(machine.evaluate('chr 65'), 'A');
 };
+
+exports['character to number'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate("ord ' '"), 32);
+	test.strictEqual(machine.evaluate("ord '0'"), 48);
+	test.strictEqual(machine.evaluate("ord '1'"), 49);
+	test.strictEqual(machine.evaluate("ord 'A'"), 65);
+};
+
