@@ -354,6 +354,16 @@ exports['evaluate greater than with numbers'] = function (test) {
 	test.strictEqual(machine.evaluate('42 > 1'), true);
 };
 
+exports['evaluate greater than with strings'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('"foo" > "foo"'), false);
+	test.strictEqual(machine.evaluate('"bar" > ("f" ++ "ar")'), false);
+
+	test.strictEqual(machine.evaluate('"foo" > "bar"'), true);
+	test.strictEqual(machine.evaluate('"b" > "a"'), true);
+};
+
 exports['accessing character'] = function (test) {
 	var machine = machines.machine();
 	
