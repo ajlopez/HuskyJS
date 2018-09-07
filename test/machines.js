@@ -344,6 +344,30 @@ exports['evaluate less than with strings'] = function (test) {
 	test.strictEqual(machine.evaluate('"a" < "aaa"'), true);
 };
 
+exports['evaluate less or equal than with numbers'] = function (test) {
+	var machine = machines.machine();
+
+	test.strictEqual(machine.evaluate('42 <= 1'), false);
+	
+	test.strictEqual(machine.evaluate('42 <= 42'), true);
+	test.strictEqual(machine.evaluate('42 <= (21 * 2)'), true);
+
+	test.strictEqual(machine.evaluate('42 <= 101'), true);
+	test.strictEqual(machine.evaluate('1 <= 42'), true);
+};
+
+exports['evaluate less or equal than with strings'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('"foo" <= "bar"'), false);
+
+	test.strictEqual(machine.evaluate('"foo" <= "foo"'), true);
+	test.strictEqual(machine.evaluate('"foo" <= ("b" ++ "ar")'), false);
+
+	test.strictEqual(machine.evaluate('"bar" < "foo"'), true);
+	test.strictEqual(machine.evaluate('"a" < "aaa"'), true);
+};
+
 exports['evaluate greater than with numbers'] = function (test) {
 	var machine = machines.machine();
 	
