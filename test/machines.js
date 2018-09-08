@@ -388,6 +388,30 @@ exports['evaluate greater than with strings'] = function (test) {
 	test.strictEqual(machine.evaluate('"b" > "a"'), true);
 };
 
+exports['evaluate greater or equal than with numbers'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('42 >= 144'), false);
+
+	test.strictEqual(machine.evaluate('42 >= 42'), true);
+	test.strictEqual(machine.evaluate('42 >= (21 * 2)'), true);
+
+	test.strictEqual(machine.evaluate('101 >= 42'), true);
+	test.strictEqual(machine.evaluate('42 >= 1'), true);
+};
+
+exports['evaluate greater or equal than with strings'] = function (test) {
+	var machine = machines.machine();
+	
+	test.strictEqual(machine.evaluate('"bar" >= "foo"'), false);
+
+	test.strictEqual(machine.evaluate('"foo" >= "foo"'), true);
+	test.strictEqual(machine.evaluate('"bar" >= ("f" ++ "ar")'), false);
+
+	test.strictEqual(machine.evaluate('"foo" >= "bar"'), true);
+	test.strictEqual(machine.evaluate('"b" >= "a"'), true);
+};
+
 exports['accessing character'] = function (test) {
 	var machine = machines.machine();
 	
