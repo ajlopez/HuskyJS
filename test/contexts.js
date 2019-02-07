@@ -1,6 +1,6 @@
 
-var contexts = require('../lib/contexts');
-var types = require('../lib/types');
+const contexts = require('../lib/contexts');
+const types = require('../lib/types');
 
 exports['get undefined value'] = function (test) {
 	var ctx = contexts.context();

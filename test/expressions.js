@@ -1,6 +1,6 @@
 
-var expressions = require('../lib/expressions');
-var contexts = require('../lib/contexts');
+const expressions = require('../lib/expressions');
+const contexts = require('../lib/contexts');
 
 exports['evaluate integer constant expression'] = function (test) {
 	var expr = expressions.constant(42);

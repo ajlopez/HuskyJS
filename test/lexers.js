@@ -1,11 +1,11 @@
 
-var lexers = require('../lib/lexers');
-var TokenType = lexers.TokenType;
+const lexers = require('../lib/lexers');
+const TokenType = lexers.TokenType;
 
 exports['get name'] = function (test) {
-	var lexer = lexers.lexer('foo');
+	const lexer = lexers.lexer('foo');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -15,9 +15,9 @@ exports['get name'] = function (test) {
 }
 
 exports['get name and skip comment'] = function (test) {
-	var lexer = lexers.lexer('foo -- a comment');
+	const lexer = lexers.lexer('foo -- a comment');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -27,9 +27,9 @@ exports['get name and skip comment'] = function (test) {
 }
 
 exports['get name with digits'] = function (test) {
-	var lexer = lexers.lexer('foo42');
+	const lexer = lexers.lexer('foo42');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -39,9 +39,9 @@ exports['get name with digits'] = function (test) {
 }
 
 exports['get name with underscore'] = function (test) {
-	var lexer = lexers.lexer('foo_bar');
+	const lexer = lexers.lexer('foo_bar');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -51,9 +51,9 @@ exports['get name with underscore'] = function (test) {
 }
 
 exports['get name with apostrophe'] = function (test) {
-	var lexer = lexers.lexer("foo'");
+	const lexer = lexers.lexer("foo'");
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -63,9 +63,9 @@ exports['get name with apostrophe'] = function (test) {
 }
 
 exports['get underscore as name'] = function (test) {
-	var lexer = lexers.lexer('_');
+	const lexer = lexers.lexer('_');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -75,9 +75,9 @@ exports['get underscore as name'] = function (test) {
 }
 
 exports['get name starting with underscore'] = function (test) {
-	var lexer = lexers.lexer('_foo');
+	const lexer = lexers.lexer('_foo');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -87,7 +87,7 @@ exports['get name starting with underscore'] = function (test) {
 }
 
 exports['get names'] = function (test) {
-	var lexer = lexers.lexer('foo bar');
+	const lexer = lexers.lexer('foo bar');
 	
 	var result = lexer.nextToken();
 	
@@ -105,9 +105,9 @@ exports['get names'] = function (test) {
 }
 
 exports['get name with spaces'] = function (test) {
-	var lexer = lexers.lexer('  foo   ');
+	const lexer = lexers.lexer('  foo   ');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Name);
@@ -117,7 +117,7 @@ exports['get name with spaces'] = function (test) {
 }
 
 exports['get name, operator and integer'] = function (test) {
-	var lexer = lexers.lexer('n+1');
+	const lexer = lexers.lexer('n+1');
 	
 	var result = lexer.nextToken();
 	
@@ -141,9 +141,9 @@ exports['get name, operator and integer'] = function (test) {
 }
 
 exports['get new line as end of expression'] = function (test) {
-	var lexer = lexers.lexer('\n');
+	const lexer = lexers.lexer('\n');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.EndOfExpression);
@@ -153,9 +153,9 @@ exports['get new line as end of expression'] = function (test) {
 }
 
 exports['get carriage return and new line as end of expression'] = function (test) {
-var lexer = lexers.lexer('\r\n');
+    const lexer = lexers.lexer('\r\n');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.EndOfExpression);
@@ -165,9 +165,9 @@ var lexer = lexers.lexer('\r\n');
 }
 
 exports['get integer'] = function (test) {
-	var lexer = lexers.lexer('42');
+	const lexer = lexers.lexer('42');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Integer);
@@ -177,9 +177,9 @@ exports['get integer'] = function (test) {
 }
 
 exports['get string'] = function (test) {
-	var lexer = lexers.lexer('"foo"');
+	const lexer = lexers.lexer('"foo"');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.String);
@@ -189,9 +189,9 @@ exports['get string'] = function (test) {
 }
 
 exports['get character'] = function (test) {
-	var lexer = lexers.lexer("'c'");
+	const lexer = lexers.lexer("'c'");
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Character);
@@ -201,9 +201,9 @@ exports['get character'] = function (test) {
 }
 
 exports['get real'] = function (test) {
-	var lexer = lexers.lexer('3.14159');
+	const lexer = lexers.lexer('3.14159');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Real);
@@ -213,7 +213,7 @@ exports['get real'] = function (test) {
 }
 
 exports['get parenthesis as delimiters'] = function (test) {
-	var lexer = lexers.lexer('()');
+	const lexer = lexers.lexer('()');
 	
 	var result = lexer.nextToken();
 	
@@ -231,7 +231,7 @@ exports['get parenthesis as delimiters'] = function (test) {
 }
 
 exports['get braces as delimiters'] = function (test) {
-	var lexer = lexers.lexer('{}');
+	const lexer = lexers.lexer('{}');
 	
 	var result = lexer.nextToken();
 	
@@ -249,7 +249,7 @@ exports['get braces as delimiters'] = function (test) {
 }
 
 exports['get :: as operator'] = function (test) {
-	var lexer = lexers.lexer('::');
+	const lexer = lexers.lexer('::');
 	
 	var result = lexer.nextToken();
 	
@@ -261,9 +261,9 @@ exports['get :: as operator'] = function (test) {
 }
 
 exports['get + as operator'] = function (test) {
-	var lexer = lexers.lexer('+');
+	const lexer = lexers.lexer('+');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Operator);
@@ -273,9 +273,9 @@ exports['get + as operator'] = function (test) {
 }
 
 exports['get - as operator'] = function (test) {
-	var lexer = lexers.lexer('-');
+	const lexer = lexers.lexer('-');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Operator);
@@ -285,9 +285,9 @@ exports['get - as operator'] = function (test) {
 }
 
 exports['get -> as operator'] = function (test) {
-	var lexer = lexers.lexer('->');
+	const lexer = lexers.lexer('->');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Operator);
@@ -297,9 +297,9 @@ exports['get -> as operator'] = function (test) {
 }
 
 exports['get `div` as operator'] = function (test) {
-	var lexer = lexers.lexer('`div`');
+	const lexer = lexers.lexer('`div`');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Operator);
@@ -309,9 +309,9 @@ exports['get `div` as operator'] = function (test) {
 }
 
 exports['get semicolon as delimiter'] = function (test) {
-	var lexer = lexers.lexer(';');
+	const lexer = lexers.lexer(';');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Delimiter);
@@ -321,7 +321,7 @@ exports['get semicolon as delimiter'] = function (test) {
 }
 
 exports['get name and semicolon'] = function (test) {
-	var lexer = lexers.lexer('foo;');
+	const lexer = lexers.lexer('foo;');
 	
 	var result = lexer.nextToken();
 	
@@ -339,7 +339,7 @@ exports['get name and semicolon'] = function (test) {
 }
 
 exports['get name in parenthesis'] = function (test) {
-	var lexer = lexers.lexer('(foo)');
+	const lexer = lexers.lexer('(foo)');
 	
 	var result = lexer.nextToken();
 	

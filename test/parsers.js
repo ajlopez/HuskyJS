@@ -1,7 +1,7 @@
 
-var parsers = require('../lib/parsers');
-var contexts = require('../lib/contexts');
-var types = require('../lib/types');
+const parsers = require('../lib/parsers');
+const contexts = require('../lib/contexts');
+const types = require('../lib/types');
 
 exports['parse integer expression'] = function (test) {
 	var parser = parsers.parser('42');

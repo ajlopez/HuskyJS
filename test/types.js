@@ -1,5 +1,5 @@
 
-var types = require('../lib/types');
+const types = require('../lib/types');
 
 exports['Integer as type'] = function (test) {
 	test.ok(types.Integer);
