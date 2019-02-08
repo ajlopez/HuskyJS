@@ -33,6 +33,10 @@ TBD
 - [Division in Haskell](https://stackoverflow.com/questions/7368926/division-in-haskell)
 - [Haskell Syntax](http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html)
 
+## Books
+
+- Haskell, the Craft of Functional Programming; Simon Thompson
+
 ## Samples
 
 TBD
