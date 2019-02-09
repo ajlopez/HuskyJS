@@ -243,10 +243,9 @@ exports['parse func expression using top context'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
-exports['parse type definition'] = function (test) {
+exports['parse type definition'] = function (test) {    
+	var parser = parsers.parser('answer :: Int');
 	var ctx = contexts.topContext();
-    
-	var parser = parsers.parser('answer :: Int', ctx);
 	
 	var expr = parser.parse();
 	
