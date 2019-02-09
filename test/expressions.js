@@ -50,4 +50,14 @@ exports['build composite expression'] = function (test) {
 	test.equal(expr.expressions()[0].value(), 42);
 };
 
+exports['build apply expression'] = function (test) {
+	var ctx = contexts.context();
+	var expr = expressions.apply(expressions.name('n'), 'n');
+
+    var result = expr.evaluate(ctx)(42);
+    
+	test.equal(result, 42);
+};
+
+
 
