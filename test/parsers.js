@@ -262,3 +262,21 @@ exports['parse type definition'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse definition'] = function (test) {    
+	var parser = parsers.parser('answer = 42');
+	var ctx = contexts.topContext();
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	
+	var value = expr.evaluate(ctx);
+
+	test.ok(value);
+    test.equal(value, 42);
+	
+    test.equal(ctx.get('answer'), 42);
+	
+	test.equal(parser.parse(), null);	
+};
+
