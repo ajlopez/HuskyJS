@@ -280,3 +280,19 @@ exports['parse definition'] = function (test) {
 	test.equal(parser.parse(), null);	
 };
 
+exports['parse function definition with one argument'] = function (test) {    
+	var parser = parsers.parser('incr n = n + 1');
+	var ctx = contexts.topContext();
+	
+	var expr = parser.parse();
+	
+	test.ok(expr);
+	
+	var value = expr.evaluate(ctx)(41);
+
+	test.ok(value);
+    test.equal(value, 42);
+	
+	test.equal(parser.parse(), null);	
+};
+
