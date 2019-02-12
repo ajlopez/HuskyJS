@@ -68,5 +68,14 @@ exports['build apply expression twice'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['build binary expression'] = function (test) {
+	var ctx = contexts.topContext();
+	var expr = expressions.binary(expressions.name('+'), expressions.constant(40), expressions.constant(2));
+	
+	test.ok(expr);
+
+    test.equal(expr.evaluate(ctx), 42);
+};
+
 
 
