@@ -32,6 +32,7 @@ TBD
 - [Haskell 98 Report: Predefined Types and Classes](https://www.haskell.org/onlinereport/basic.html)
 - [Division in Haskell](https://stackoverflow.com/questions/7368926/division-in-haskell)
 - [Haskell Syntax](http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html)
+- [Underscore](https://typeclasses.com/underscore)
 
 ## Books
 
