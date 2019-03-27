@@ -33,6 +33,7 @@ TBD
 - [Division in Haskell](https://stackoverflow.com/questions/7368926/division-in-haskell)
 - [Haskell Syntax](http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html)
 - [Underscore](https://typeclasses.com/underscore)
+- [The Minimalist Prelude](https://medium.com/@stackdoesnotwork/the-minimalist-prelude-3e187bc834fc)
 
 ## Books
 
