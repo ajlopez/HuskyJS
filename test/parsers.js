@@ -4,9 +4,9 @@ const contexts = require('../lib/contexts');
 const types = require('../lib/types');
 
 exports['parse integer expression'] = function (test) {
-	var parser = parsers.parser('42');
+	const parser = parsers.parser('42');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), 42);
@@ -15,25 +15,25 @@ exports['parse integer expression'] = function (test) {
 };
 
 exports['parse two integer expression'] = function (test) {
-	var parser = parsers.parser('42\n1');
+	const parser = parsers.parser('42\n1');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), 42);
 	
-	var expr = parser.parse();
+	const expr2 = parser.parse();
 	
-	test.ok(expr);
-	test.equal(expr.evaluate(), 1);
+	test.ok(expr2);
+	test.equal(expr2.evaluate(), 1);
 	
 	test.equal(parser.parse(), null);	
 };
 
 exports['parse integer expression in parentheses'] = function (test) {
-	var parser = parsers.parser('(42)');
+	const parser = parsers.parser('(42)');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), 42);
@@ -42,9 +42,9 @@ exports['parse integer expression in parentheses'] = function (test) {
 };
 
 exports['parse real expression'] = function (test) {
-	var parser = parsers.parser('3.14159');
+	const parser = parsers.parser('3.14159');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), 3.14159);
@@ -53,9 +53,9 @@ exports['parse real expression'] = function (test) {
 };
 
 exports['parse real expression in parenthesis'] = function (test) {
-	var parser = parsers.parser('(3.14159)');
+	const parser = parsers.parser('(3.14159)');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), 3.14159);
@@ -64,9 +64,9 @@ exports['parse real expression in parenthesis'] = function (test) {
 };
 
 exports['parse string expression'] = function (test) {
-	var parser = parsers.parser('"foo"');
+	const parser = parsers.parser('"foo"');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), "foo");
@@ -75,9 +75,9 @@ exports['parse string expression'] = function (test) {
 };
 
 exports['parse character expression'] = function (test) {
-	var parser = parsers.parser("'a'");
+	const parser = parsers.parser("'a'");
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(), "a");
@@ -86,11 +86,11 @@ exports['parse character expression'] = function (test) {
 };
 
 exports['parse name expression'] = function (test) {
-	var parser = parsers.parser('foo');
-	var ctx = contexts.context();
+	const parser = parsers.parser('foo');
+	const ctx = contexts.context();
 	ctx.set('foo', 'bar');
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), "bar");
@@ -99,11 +99,11 @@ exports['parse name expression'] = function (test) {
 };
 
 exports['parse composite expression with one argument'] = function (test) {
-	var parser = parsers.parser('incr 1');
-	var ctx = contexts.context();
+	const parser = parsers.parser('incr 1');
+	const ctx = contexts.context();
 	ctx.set('incr', function (ctx, x) { return x.evaluate(ctx) + 1; });
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), 2);
@@ -112,20 +112,20 @@ exports['parse composite expression with one argument'] = function (test) {
 };
 
 exports['parse composite expression with two argument'] = function (test) {
-	var parser = parsers.parser('add 1 2');
-	var ctx = contexts.context();
+	const parser = parsers.parser('add 1 2');
+	const ctx = contexts.context();
 	
 	ctx.set('add', function (ctx, x) {
-		var xval = x.evaluate(ctx);
+		const xval = x.evaluate(ctx);
 		
 		return function (ctx, y) {
-			var yval = y.evaluate(ctx);
+			const yval = y.evaluate(ctx);
 			
 			return xval + yval; 
 		} 
 	});
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), 3);
@@ -134,19 +134,19 @@ exports['parse composite expression with two argument'] = function (test) {
 };
 
 exports['parse function expression in parentheses'] = function (test) {
-	var parser = parsers.parser('(add)');
-	var ctx = contexts.context();
+	const parser = parsers.parser('(add)');
+	const ctx = contexts.context();
 	ctx.set('add', function (ctx, x) {
-		var xval = x.evaluate(ctx);
+		const xval = x.evaluate(ctx);
 		
 		return function (ctx, y) {
-			var yval = y.evaluate(ctx);
+			const yval = y.evaluate(ctx);
 			
 			return xval + yval; 
 		} 
 	});
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), ctx.get('add'));
@@ -155,10 +155,10 @@ exports['parse function expression in parentheses'] = function (test) {
 };
 
 exports['parse Integer type expression'] = function (test) {
-	var parser = parsers.parser('Integer');
-	var ctx = contexts.topContext();
+	const parser = parsers.parser('Integer');
+	const ctx = contexts.topContext();
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), types.Integer);
@@ -167,10 +167,10 @@ exports['parse Integer type expression'] = function (test) {
 };
 
 exports['parse String type expression'] = function (test) {
-	var parser = parsers.parser('String');
-	var ctx = contexts.topContext();
+	const parser = parsers.parser('String');
+	const ctx = contexts.topContext();
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), types.String);
@@ -179,20 +179,20 @@ exports['parse String type expression'] = function (test) {
 };
 
 exports['parse add expression'] = function (test) {
-	var parser = parsers.parser('2+3');
-	var ctx = contexts.context();
+	const parser = parsers.parser('2+3');
+	const ctx = contexts.context();
 
 	ctx.set('+', function (ctx, x) {
-		var xval = x.evaluate(ctx);
+		const xval = x.evaluate(ctx);
 		
 		return function (ctx, y) {
-			var yval = y.evaluate(ctx);
+			const yval = y.evaluate(ctx);
 			
 			return xval + yval; 
 		} 
 	});
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	test.equal(expr.evaluate(ctx), 5);
@@ -201,8 +201,8 @@ exports['parse add expression'] = function (test) {
 };
 
 exports['parse func expression'] = function (test) {
-	var parser = parsers.parser('String -> Integer');
-	var ctx = contexts.context();
+	const parser = parsers.parser('String -> Integer');
+	const ctx = contexts.context();
 	ctx.set('->', function (ctx, x) { 
 		return function (ctx, y) { 
 			return types.func(x.evaluate(ctx), y.evaluate(ctx)); 
@@ -211,11 +211,11 @@ exports['parse func expression'] = function (test) {
 	ctx.set('Integer', types.Integer);
 	ctx.set('String', types.String);
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	
-	var value = expr.evaluate(ctx);
+	const value = expr.evaluate(ctx);
 	
 	test.ok(value);
 	test.ok(types.isType(value));
@@ -226,14 +226,14 @@ exports['parse func expression'] = function (test) {
 };
 
 exports['parse func expression using top context'] = function (test) {
-	var parser = parsers.parser('String -> Integer');
-	var ctx = contexts.topContext();
+	const parser = parsers.parser('String -> Integer');
+	const ctx = contexts.topContext();
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	
-	var value = expr.evaluate(ctx);
+	const value = expr.evaluate(ctx);
 	
 	test.ok(value);
 	test.ok(types.isType(value));
@@ -244,14 +244,14 @@ exports['parse func expression using top context'] = function (test) {
 };
 
 exports['parse type definition'] = function (test) {    
-	var parser = parsers.parser('answer :: Int');
-	var ctx = contexts.topContext();
+	const parser = parsers.parser('answer :: Int');
+	const ctx = contexts.topContext();
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	
-	var value = expr.evaluate(ctx);
+	const value = expr.evaluate(ctx);
 
 	test.ok(value);
 	test.ok(types.isType(value));
@@ -263,14 +263,14 @@ exports['parse type definition'] = function (test) {
 };
 
 exports['parse definition'] = function (test) {    
-	var parser = parsers.parser('answer = 42');
-	var ctx = contexts.topContext();
+	const parser = parsers.parser('answer = 42');
+	const ctx = contexts.topContext();
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	
-	var value = expr.evaluate(ctx);
+	const value = expr.evaluate(ctx);
 
 	test.ok(value);
     test.equal(value, 42);
@@ -281,14 +281,14 @@ exports['parse definition'] = function (test) {
 };
 
 exports['parse function definition with one argument'] = function (test) {    
-	var parser = parsers.parser('incr n = n + 1');
-	var ctx = contexts.topContext();
+	const parser = parsers.parser('incr n = n + 1');
+	const ctx = contexts.topContext();
 	
-	var expr = parser.parse();
+	const expr = parser.parse();
 	
 	test.ok(expr);
 	
-	var value = expr.evaluate(ctx)(41);
+	const value = expr.evaluate(ctx)(41);
 
 	test.ok(value);
     test.equal(value, 42);

@@ -37,7 +37,7 @@ exports['Char as type'] = function (test) {
 };
 
 exports['Function type'] = function (test) {
-	var fnt = types.func(types.String, types.Integer);
+	const fnt = types.func(types.String, types.Integer);
 	
 	test.ok(fnt);
 	test.ok(types.isType(fnt));
