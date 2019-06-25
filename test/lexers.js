@@ -377,23 +377,24 @@ exports['get name and semicolon'] = function (test) {
 exports['get name in parenthesis'] = function (test) {
 	const lexer = lexers.lexer('(foo)');
 	
-	var result = lexer.nextToken();
+	const result = lexer.nextToken();
 	
 	test.ok(result);
 	test.equal(result.type, TokenType.Delimiter);
 	test.equal(result.value, '(');
 	
-	var result = lexer.nextToken();
+	const result2 = lexer.nextToken();
 	
-	test.ok(result);
-	test.equal(result.type, TokenType.Name);
-	test.equal(result.value, 'foo');
+	test.ok(result2);
+	test.equal(result2.type, TokenType.Name);
+	test.equal(result2.value, 'foo');
 	
-	var result = lexer.nextToken();
+	const result3 = lexer.nextToken();
 	
-	test.ok(result);
-	test.equal(result.type, TokenType.Delimiter);
-	test.equal(result.value, ')');
+	test.ok(result3);
+	test.equal(result3.type, TokenType.Delimiter);
+	test.equal(result3.value, ')');
 	
 	test.equal(lexer.nextToken(), null);
 }
+
