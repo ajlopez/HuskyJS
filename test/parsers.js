@@ -15,6 +15,22 @@ exports['parse integer expression'] = function (test) {
 };
 
 exports['parse two integer expression'] = function (test) {
+	const parser = parsers.parser('42 144');
+	
+	const expr = parser.parse();
+	
+	test.ok(expr);
+	test.equal(expr.evaluate(), 42);
+	
+	const expr2 = parser.parse();
+	
+	test.ok(expr2);
+	test.equal(expr2.evaluate(), 144);
+	
+	test.equal(parser.parse(), null);	
+};
+
+exports['parse two integer expression'] = function (test) {
 	const parser = parsers.parser('42\n1');
 	
 	const expr = parser.parse();
