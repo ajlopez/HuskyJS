@@ -438,3 +438,15 @@ exports['character to number'] = function (test) {
 	test.strictEqual(machine.evaluate("ord 'A'"), 65);
 };
 
+exports['execute integer'] = function (test) {
+	const machine = machines.machine();
+	
+	test.strictEqual(machine.execute("42"), 42);
+};
+
+exports['execute two integers'] = function (test) {
+	const machine = machines.machine();
+	
+	test.strictEqual(machine.execute("1\n42"), 42);
+};
+
