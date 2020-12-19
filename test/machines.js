@@ -460,9 +460,20 @@ exports['execute two integers'] = function (test) {
 	test.strictEqual(machine.execute("1\n42"), 42);
 };
 
+exports['execute named arithmetic expression'] = function (test) {
+	const machine = machines.machine();
+	
+	test.strictEqual(machine.execute("three :: Int\nthree = 2 + 1\nthree"), 3);
+};
+
 exports['execute double definition and invocation'] = function (test) {
 	const machine = machines.machine();
 	
 	test.strictEqual(machine.execute("double :: Int -> Int\ndouble n = n * 2\ndouble 21"), 42);
 };
 
+exports['execute function composition'] = function (test) {
+	const machine = machines.machine();
+	
+	test.strictEqual(machine.execute("double :: Int -> Int\ndouble n = n * 2\ntriple :: Int -> Int\ntriple n = n * 3\nbysix :: Int -> Int\nbysix = double . triple\nbysix 7"), 42);
+};
