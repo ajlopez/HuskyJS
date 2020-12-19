@@ -304,7 +304,7 @@ exports['parse function definition with one argument'] = function (test) {
 	
 	test.ok(expr);
 	
-	const value = expr.evaluate(ctx)(41);
+	const value = expr.evaluate(ctx)(ctx, 41);
 
 	test.ok(value);
     test.equal(value, 42);

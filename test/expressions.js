@@ -54,7 +54,7 @@ exports['build apply expression'] = function (test) {
 	const ctx = contexts.context();
 	const expr = expressions.apply(expressions.name('n'), 'n');
 
-    const result = expr.evaluate(ctx)(42);
+    const result = expr.evaluate(ctx)(ctx, 42);
     
 	test.equal(result, 42);
 };
@@ -63,7 +63,7 @@ exports['build apply expression twice'] = function (test) {
 	const ctx = contexts.topContext();
 	const expr = expressions.apply(expressions.apply(expressions.composite(expressions.operator('+'), [ expressions.name('a'), expressions.name('b') ]), 'b'), 'a');
 
-    const result = expr.evaluate(ctx)(40)(2);
+    const result = expr.evaluate(ctx)(ctx, 40)(ctx, 2);
     
 	test.equal(result, 42);
 };

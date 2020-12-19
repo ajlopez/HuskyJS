@@ -131,6 +131,16 @@ exports['evaluate add value and number'] = function (test) {
 	test.equal(result, 42);
 };
 
+exports['define and evaluate double'] = function (test) {
+	const machine = machines.machine();
+	
+	machine.evaluate("double n = 2 * n");
+	const result = machine.evaluate("double 21");
+	
+	test.ok(result);
+	test.equal(result, 42);
+};
+
 exports['evaluate raise to power'] = function (test) {
 	const machine = machines.machine();
 	
@@ -448,5 +458,11 @@ exports['execute two integers'] = function (test) {
 	const machine = machines.machine();
 	
 	test.strictEqual(machine.execute("1\n42"), 42);
+};
+
+exports['execute double definition and invocation'] = function (test) {
+	const machine = machines.machine();
+	
+	test.strictEqual(machine.execute("double :: Int -> Int\ndouble n = n * 2\ndouble 21"), 42);
 };
 
