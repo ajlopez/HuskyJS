@@ -26,6 +26,42 @@ exports['get name and skip comment'] = function (test) {
 	test.equal(lexer.nextToken(), null);
 }
 
+exports['get name and skip comment and get end of expression'] = function (test) {
+	const lexer = lexers.lexer('foo -- a comment\n');
+	
+	const result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, 'foo');
+	
+	const result2 = lexer.nextToken();
+	
+	test.ok(result2);
+	test.equal(result2.type, TokenType.EndOfExpression);
+	test.equal(result2.value, '\n');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
+exports['get names skipping multiline comment'] = function (test) {
+    const lexer = lexers.lexer('foo {- a multiline\r\ncomment -} bar');
+	
+	const result = lexer.nextToken();
+	
+	test.ok(result);
+	test.equal(result.type, TokenType.Name);
+	test.equal(result.value, 'foo');
+	
+	const result2 = lexer.nextToken();
+	
+	test.ok(result2);
+	test.equal(result2.type, TokenType.Name);
+	test.equal(result2.value, 'bar');
+	
+	test.equal(lexer.nextToken(), null);
+}
+
 exports['get name with digits'] = function (test) {
 	const lexer = lexers.lexer('foo42');
 	
