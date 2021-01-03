@@ -34,10 +34,12 @@ TBD
 - [Haskell Syntax](http://rigaux.org/language-study/syntax-across-languages-per-language/Haskell.html)
 - [Underscore](https://typeclasses.com/underscore)
 - [The Minimalist Prelude](https://medium.com/@stackdoesnotwork/the-minimalist-prelude-3e187bc834fc)
+- [Evaluation of function calls in Haskell](https://www.treszkai.com/2019/07/13/haskell-eval/)
 
 ## Books
 
 - Haskell, the Craft of Functional Programming; Simon Thompson
+- Haskell Programming from first principles
 
 ## Samples
 
