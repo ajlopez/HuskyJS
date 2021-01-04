@@ -475,5 +475,5 @@ exports['execute double definition and invocation'] = function (test) {
 exports['execute function composition'] = function (test) {
 	const machine = machines.machine();
 	
-	test.strictEqual(machine.execute("double :: Int -> Int\ndouble n = n * 2\ntriple :: Int -> Int\ntriple n = n * 3\nbysix :: Int -> Int\nbysix = double . triple\nbysix 7"), 42);
+	test.strictEqual(machine.execute("double :: Int -> Int\ndouble x = x * 2\ntriple :: Int -> Int\ntriple y = y * 3\nbysix :: Int -> Int\nbysix = double . triple\nbysix 7"), 42);
 };

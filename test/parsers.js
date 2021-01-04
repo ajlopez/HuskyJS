@@ -2,6 +2,7 @@
 const parsers = require('../lib/parsers');
 const contexts = require('../lib/contexts');
 const types = require('../lib/types');
+const expressions = require('../lib/expressions');
 
 exports['parse integer expression'] = function (test) {
 	const parser = parsers.parser('42');
@@ -304,7 +305,7 @@ exports['parse function definition with one argument'] = function (test) {
 	
 	test.ok(expr);
 	
-	const value = expr.evaluate(ctx)(ctx, 41);
+	const value = expr.evaluate(ctx)(ctx, expressions.constant(41));
 
 	test.ok(value);
     test.equal(value, 42);
