@@ -216,6 +216,13 @@ exports['evaluate sqrt operator'] = function (test) {
 	test.equal(machine.evaluate("sqrt 25"), 5);
 };
 
+exports['evaluate negate operator'] = function (test) {
+	const machine = machines.machine();
+	
+	test.equal(machine.evaluate("negate 4"), -4);
+	test.equal(machine.evaluate("negate 25"), -25);
+};
+
 exports['evaluate exp operator'] = function (test) {
 	const machine = machines.machine();
 	
