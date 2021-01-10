@@ -77,5 +77,25 @@ exports['build binary expression'] = function (test) {
     test.equal(expr.evaluate(ctx), 42);
 };
 
+exports['evaluate builtin mod'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('mod'), expressions.constant(3), expressions.constant(2));
+
+    test.equal(expr.evaluate(ctx), 1);
+};
+
+exports['evaluate builtin mod with negative divisor'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('mod'), expressions.constant(5), expressions.constant(-3));
+
+    test.equal(expr.evaluate(ctx), -1);
+};
+
+exports['evaluate builtin mod with negative numbers'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('mod'), expressions.constant(-3), expressions.constant(-2));
+
+    test.equal(expr.evaluate(ctx), -1);
+};
 
 
