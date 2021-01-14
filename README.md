@@ -35,6 +35,8 @@ TBD
 - [Underscore](https://typeclasses.com/underscore)
 - [The Minimalist Prelude](https://medium.com/@stackdoesnotwork/the-minimalist-prelude-3e187bc834fc)
 - [Evaluation of function calls in Haskell](https://www.treszkai.com/2019/07/13/haskell-eval/)
+- [Difference between `mod` and `rem` in Haskell](https://stackoverflow.com/questions/5891140/difference-between-mod-and-rem-in-haskell)
+- [Division in Haskell](https://ebzzry.io/en/haskell-division/)
 
 ## Books
 

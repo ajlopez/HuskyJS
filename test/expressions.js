@@ -98,4 +98,26 @@ exports['evaluate builtin mod with negative numbers'] = function (test) {
     test.equal(expr.evaluate(ctx), -1);
 };
 
+exports['evaluate builtin rem'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('rem'), expressions.constant(3), expressions.constant(2));
+
+    test.equal(expr.evaluate(ctx), 1);
+};
+
+exports['evaluate builtin rem with negative divisor'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('rem'), expressions.constant(5), expressions.constant(-3));
+
+    test.equal(expr.evaluate(ctx), 2);
+};
+
+exports['evaluate builtin rem with negative numbers'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('rem'), expressions.constant(-5), expressions.constant(-3));
+
+    test.equal(expr.evaluate(ctx), -2);
+};
+
+
 
