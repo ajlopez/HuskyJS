@@ -91,6 +91,14 @@ exports['evaluate builtin mod with negative divisor'] = function (test) {
     test.equal(expr.evaluate(ctx), -1);
 };
 
+// https://stackoverflow.com/questions/8111120/integral-operators-quot-vs-div
+exports['evaluate builtin mod with negative divident'] = function (test) {
+	const ctx = contexts.topContext();
+	const expr = expressions.binary(expressions.name('mod'), expressions.constant(-20), expressions.constant(3));
+
+    test.equal(expr.evaluate(ctx), 1);
+};
+
 exports['evaluate builtin mod with negative numbers'] = function (test) {
 	const ctx = contexts.topContext();
 	const expr = expressions.binary(expressions.name('mod'), expressions.constant(-3), expressions.constant(-2));
